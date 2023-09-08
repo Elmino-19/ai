@@ -4,15 +4,13 @@ import streamlit as st
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
-
-config_file_path = 'ai/static/config.yaml'
 def login_form():
     # Placeholder for streamlit content
     place_holder = st.empty()
-
-    # Loading config from static/config.yaml
-    with open(config_file_path) as file:
-        config = yaml.load(file, Loader=yaml.SafeLoader)
+    
+    # Loading config from pages/static/config.yaml
+    with open('.streamlit/config.yaml') as file:
+        config = yaml.load(file, Loader=SafeLoader)
 
     # Creating the authenticator object
     authenticator = stauth.Authenticate(
@@ -38,7 +36,7 @@ def login_form():
                 st.session_state["username"] = username
 
 
-                with open(config_file_path, 'w') as file:
+                with open('.streamlit/config.yaml', 'w') as file:
                     yaml.dump(config, file, default_flow_style=False)
                 st.title("صحت اپلیکیشن کمک یار ورزش")
             elif authentication_status is False:
@@ -52,7 +50,7 @@ def login_form():
             try:
                 if authenticator.register_user('Register user', preauthorization=False):
                     st.success('ثبت نام موفقیت آمیز بود')
-                    with open(config_file_path, 'w') as file:
+                    with open('.streamlit/config.yaml', 'w') as file:
                         yaml.dump(config, file, default_flow_style=False)
             except Exception as e:
                 st.error(e)
@@ -64,7 +62,7 @@ def login_form():
                 st.success("رمز عبور با موفقیت تغییر کرد")
                 st.write(random_password)
                 config['random_password'] = random_password
-                with open(config_file_path, 'w') as file:
+                with open('.streamlit/config.yaml', 'w') as file:
                     yaml.dump(config, file, default_flow_style=False)
             else:
                 st.error('نام کاربری یافت نشد')
