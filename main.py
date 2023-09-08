@@ -29,7 +29,7 @@ def main():
             return json.load(p)
 
     # Loading config from .streamlit/config.yaml
-    with open('.streamlit/config.yaml') as file:
+    with open('static/config.yaml') as file:
         config = yaml.safe_load(file)
 
     # Creating the authenticator object
