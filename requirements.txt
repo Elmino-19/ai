@@ -6,3 +6,4 @@ streamlit-javascript==0.1.5
 streamlit-lottie==0.0.5
 PyYAML==6.0
 pandas==2.0.3
+numpy
