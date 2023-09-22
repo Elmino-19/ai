@@ -1,9 +1,10 @@
 opencv-python-headless==4.8.0.74
 mediapipe==0.10.2
-streamlit==1.24.0
+streamlit
 streamlit-authenticator==0.2.2
 streamlit-javascript==0.1.5
 streamlit-lottie==0.0.5
 PyYAML==6.0
 pandas==2.0.3
 numpy
+streamlit-camera-input-live
